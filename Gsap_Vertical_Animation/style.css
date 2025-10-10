@@ -1,0 +1,238 @@
+
+.section-entry-new {
+  position: relative;
+  min-height: 100vh;
+  padding: 50px 0px !important;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-entry-neww {
+  position: relative;
+  min-height: 100vh;
+  padding: 50px 0px !important;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-text-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0px;
+  flex-direction: row;
+  position: relative;
+  z-index: 10;
+}
+
+.icon-text-center img {
+  width: 45px;
+  height: auto;
+  margin-bottom: 0px;
+  opacity: 0.9;
+}
+
+.section-heading {
+  color: #005d69;
+  font-size: 42px;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.cards-container {
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  height: 550px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+/* Left side - Image stack */
+.images-stack {
+  position: relative;
+  height: 480px;
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.entry-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, scale;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 12px 25px rgba(0, 0, 0, 0.1),
+    0 5px 10px rgba(0, 0, 0, 0.05);
+  transition: none;
+}
+
+.entry-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+}
+
+/* Right side - Content */
+.content-area {
+  position: relative;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.entry-content {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: none; /* Remove transition to let GSAP handle animations */
+  padding: 40px 0px;
+  will-change: opacity;
+}
+
+.entry-content.active {
+  opacity: 1;
+}
+
+/* Image stack positioning - natural card stack */
+.entry-image:nth-child(1) {
+  z-index: 30;
+  transform: translateZ(0px);
+  opacity: 1;
+  scale: 1;
+}
+
+.entry-image:nth-child(2) {
+  z-index: 20;
+  transform: translateZ(-20px) translateY(-15px) rotateY(2deg);
+  opacity: 0.95;
+  scale: 0.98;
+}
+
+.entry-image:nth-child(3) {
+  z-index: 10;
+  transform: translateZ(-40px) translateY(-30px) rotateY(4deg);
+  opacity: 0.9;
+  scale: 0.96;
+}
+
+/* Content styling */
+.entry-content .text-brown {
+  color: #8B4513;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1.2px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.entry-content .back-text-2 {
+  color: #3a9da0;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 44px;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+  font-family: "DunbarTall", sans-serif;
+}
+
+.entry-content .back-text-3 {
+  color: #333;
+  font-size: 13px;
+  line-height: 26px;
+  font-weight: 400;
+  margin: 0;
+  font-family: "DunbarBook", sans-serif;
+}
+
+/* Card sliding states - cards jump to back of stack */
+.entry-card.sliding-back {
+  transform: translate(-50%, -50%) translateZ(-120px) translateY(25px) scale(0.85);
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.entry-card.at-back {
+  z-index: 1;
+  opacity: 0.6;
+  transform: translate(-50%, -50%) translateZ(-100px) translateY(20px) scale(0.8);
+}
+
+.entry-card.revealed {
+  z-index: 3;
+  transform: translate(-50%, -50%) translateZ(0px);
+  opacity: 1;
+  scale: 1;
+}
+
+/* Enhanced card styling for sliding deck effect */
+.entry-card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transform-origin: center center;
+  transition: transform 0.1s ease, opacity 0.1s ease, scale 0.1s ease;
+}
+
+.card-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.card-subtitle {
+  font-weight: 200;
+  font-size: 13px;
+  line-height: 26px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #976A4C;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 38px;
+  letter-spacing: 3px;
+  word-spacing: 3px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.card-description {
+  font-weight: 200;
+  font-size: 13px;
+  line-height: 26px;
+  letter-spacing: 1px;
+  color: #666;
+}
